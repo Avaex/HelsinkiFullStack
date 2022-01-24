@@ -1,5 +1,6 @@
 Notes over browser:
 User types name of note and hits the Save button (form submit). Since the server did not ask for a redirect, the browser stays on the same page and sends no further HTTP requests. The spa.js file contains Javascript code on what to do when the form submit button is hit. Command document.getElementById('notes-form') instructs the code to fetch the form-element from the page, and to register an event handler to handle the form submit event. This event handler calls e.preventDefault() to prevent the default handling of form submit (different from non-SPA version). The event handler then creates a new note, adds it to the ntoes list with note.push(note), rerenders the note list on the page and sends the new note to the server in JSON format with an HTTP POST.
+End note
 
 browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
 server->browser: Server sends browser status code 201
