@@ -1,0 +1,19 @@
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+server->browser: Server sends back HTTP status code 302, telling browser to do a new HTTP GET request of the notes page.
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server->browser: Browser gets and opens https://studies.cs.helsinki.fi/exampleapp/notes again
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server->browser: Server sends browser main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server->browser: Server sends browser main.js.
+
+Note over browser:
+Browser starts executing the javascript file main.js sent by the server. This main.js file requests JSON data from the server (data.json)
+End note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server->browser: Browser retrieves contents of data.json (all of the notes listed on the page)
+
+Notes over browser:
+Browser now has data.json which contains all the notes to be listed on the page. The rest of the main.js file continues executing and now displays the list of notes.
+End note
