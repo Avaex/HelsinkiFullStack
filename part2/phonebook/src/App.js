@@ -17,8 +17,6 @@ const App = () => {
   const [notificationSuccess, setNotificationSuccess] = useState(true)
 
   useEffect(() => {
-    console.log('useEffect executing')
-
     personService.getAll().then(initialPersons => {
       setPersons(initialPersons)
       setFilteredPersons(initialPersons)
@@ -26,17 +24,14 @@ const App = () => {
   }, [])
 
   const handleNameChange = (event) => {
-    console.log(event.target.value)
     setNewName(event.target.value)
   }
 
   const handlePhoneChange = (event) => {
-    console.log(event.target.value)
     setNewNumber(event.target.value)
   }
 
   const handleFilter = (event) => {
-    console.log(event.target.value)
     setShowFilter(event.target.value.toLowerCase())
 
     let filtered = []
@@ -59,7 +54,6 @@ const App = () => {
 
   const addPerson = (event) => {
     event.preventDefault()
-    console.log('Adding new person')
     
     const newPerson = {
       name: newName,
@@ -99,8 +93,8 @@ const App = () => {
   }
 
   const deletePerson = (id) => {
-    console.log('Deleting: ', id)
-    personService.cutPerson(id).then(response => {
+    personService.cutPerson(id)
+    .then(response => {
       setNotificationMessage('Successful deletion')
       setNotificationSuccess(true)
     })
@@ -111,13 +105,12 @@ const App = () => {
       setNotificationMessage(`Information of ${found.name} has already been removed from the server`)
       setNotificationSuccess(false)
     })
+
     setPersons(persons.filter(p => p.id !== id))
     setFilteredPersons(persons.filter(p => p.id !== id))
   }
 
   const update = (id) => {
-    console.log('Updating: ', id)
-
     const personToUpdate = persons.find(person => {
       return person.id === id
     })

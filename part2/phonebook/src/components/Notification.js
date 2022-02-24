@@ -1,4 +1,5 @@
 const Notification = ({ message, notificationStyle }) => {
+
   const notificationStyleSuccess = {
     color: 'green',
     background: 'lightgrey',
@@ -19,10 +20,6 @@ const Notification = ({ message, notificationStyle }) => {
     marginBottom: 10,
     fontStyle: 'italic',
     fontSize: 20,
-  }
-
-  if (message === null) {
-    return null
   }
 
   return (
